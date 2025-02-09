@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from torch.autograd import grad
 import torchvision
 from torchvision import models, datasets, transforms
-print(torch.__version__, torchvision.__version__)
+# print(torch.__version__, torchvision.__version__)
 
 from utils import label_to_onehot, cross_entropy_for_onehot
 
@@ -28,7 +28,7 @@ if torch.cuda.is_available():
     device = "cuda"
 print("Running on %s" % device)
 
-dst = datasets.CIFAR100("~/.torch", download=True)
+dst = datasets.CIFAR100("../Data", download=True)
 tp = transforms.ToTensor()
 tt = transforms.ToPILImage()
 
@@ -73,7 +73,7 @@ optimizer = torch.optim.LBFGS([dummy_data, dummy_label])
 
 
 history = []
-for iters in range(300):
+for iters in range(1000):
     def closure():
         optimizer.zero_grad()
 
